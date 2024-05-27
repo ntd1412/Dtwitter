@@ -1,0 +1,104 @@
+#home-section-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  gap: 2em;
+}
+#home-left {
+  margin-top: 2em;
+  width: 47em;
+  align-self: flex-start;
+  font-family: "Nexa Bold";
+  position: relative;
+}
+
+#home-middle {
+  margin-top: 2em;
+  width: 68em;
+}
+
+.home-posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+#posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  margin-bottom: 2em;
+}
+.posts {
+  padding: 3em;
+}
+#home-right {
+  margin-top: 2em;
+  width: 47em;
+  align-self: flex-start;
+  font-family: "Nexa Bold";
+  position: relative;
+}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 3em;
+}
+@media (min-width: 2400px) {
+  #home-section-container {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1680px) {
+  #home-section-container {
+    gap: 1em;
+  }
+  #home-middle {
+    margin-top: 1em;
+    flex-shrink: 0.8;
+  }
+  #home-left,
+  #home-right {
+    margin-top: 1.25em;
+    font-size: 0.8em;
+  }
+  #home-left {
+    margin-left: 0.5em;
+  }
+  #home-right {
+    margin-right: 0.5em;
+  }
+  #posts-container {
+    gap: 1em;
+  }
+}
+@media (max-width: 1100px) {
+  #home-middle {
+    width: 80%;
+  }
+  #home-left,
+  #home-right {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  #home-middle {
+    margin: 0;
+    width: 100%;
+    font-size: 11px;
+  }
+  #posts-container {
+    gap: 0.5em;
+  }
+  .posts {
+    padding: 3em 2em;
+    border-radius: 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #home-middle {
+    font-size: 9px;
+  }
+}

@@ -1,0 +1,53 @@
+#gallery-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.8em;
+  height: 70em;
+
+  & h1 {
+    font-family: "Nexa Bold";
+    align-self: flex-start;
+    font-size: 3.2em;
+    font-weight: 600;
+    margin-top: 2em;
+  }
+  & .loading {
+    position: relative;
+  }
+}
+.spinner-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 250%;
+  left: 0;
+  width: 100%;
+  font-size: 1.2em;
+}
+#profile-gallery {
+  width: 60em;
+  height: 80%;
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  #gallery-tab {
+    align-items: start;
+    width: 100%;
+    height: 60em;
+    margin: 0;
+    border-radius: 0;
+
+    & h1 {
+      font-size: 2.5em;
+    }
+  }
+  #profile-gallery {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 98%;
+    height: 50em;
+  }
+}

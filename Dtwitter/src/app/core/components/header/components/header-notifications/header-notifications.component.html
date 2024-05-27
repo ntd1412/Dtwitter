@@ -1,0 +1,74 @@
+<div
+  id="header-notifications"
+  class="secondary-background rounded-border box-shadow theme-border"
+>
+  <h1>Friend Requests:</h1>
+  <p id="no-requests">No New Requests at the moment</p>
+  <!-- friend requests -->
+  @for (request of friendRequests; track request.friendRequestId) {
+  <div class="notifications theme-border-bottom">
+    <!-- pending request -->
+    @if (request.status === 0) {
+    <div class="pending-request">
+      <a
+        routerLink="/user/{{ request.senderUsername }}"
+        class="avatar-time-name"
+      >
+        <app-user-avatar
+          class="notifications-user-avatar"
+          [profilePictureUrl]="request.senderProfilePictureUrl"
+          [fullName]="request.senderFullName"
+          [gender]="request.senderGender"
+        ></app-user-avatar>
+        <div class="time-name">
+          <h2>{{ request.senderFullName }}</h2>
+          <p>{{ request.timeSent | relativeTime }}</p>
+        </div>
+      </a>
+      <div class="accept-decline">
+        <button
+          type="button"
+          (click)="respondToFriendRequest(request.friendRequestId, true)"
+          class="accept-decline-button reverse-parameters"
+          [disabled]="isLoading"
+        >
+          Accept
+        </button>
+        <button
+          type="button"
+          (click)="respondToFriendRequest(request.friendRequestId, false)"
+          class="accept-decline-button reverse-parameters decline"
+          [disabled]="isLoading"
+        >
+          Decline
+        </button>
+      </div>
+    </div>
+    <!-- resolved requests -->
+    } @else if(request.status === 1 || request.status === 2) {
+    <div class="accepted-or-declined">
+      <button
+        type="button"
+        (click)="removeFriendRequest(request.friendRequestId)"
+        class="avatar-accepted-or-declined"
+        [disabled]="isLoading"
+      >
+        <app-user-avatar
+          class="notifications-user-avatar"
+          [profilePictureUrl]="request.recipientProfilePictureUrl"
+          [fullName]="request.recipientFullName"
+          [gender]="request.recipientGender"
+        ></app-user-avatar>
+        <div class="name">
+          <h2>{{ request.recipientFullName }}</h2>
+          <p>
+            Has {{ request.status === 1 ? " accepted" : " declined" }} your
+            friend request.
+          </p>
+        </div>
+      </button>
+    </div>
+    }
+  </div>
+  }
+</div>

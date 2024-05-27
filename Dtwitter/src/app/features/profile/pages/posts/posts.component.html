@@ -1,0 +1,35 @@
+<div id="posts-tab" class="secondary-background rounded-border" #scrollable>
+  <h1 *ngIf="noPosts">User has no posts</h1>
+  <div class="home-posts-container">
+    <div
+      class="posts skeleton secondary-background rounded-border box-shadow theme-border"
+      *ngIf="isLoading"
+    >
+      <app-post-skeleton [loadingError]="loadingError"></app-post-skeleton>
+    </div>
+    <div
+      id="posts-container"
+      #scrollable
+      infiniteScroll
+      [infiniteScrollContainer]="scrollable"
+      [infiniteScrollDistance]="0.8"
+      [infiniteScrollThrottle]="300"
+      (scrolled)="onScroll()"
+    >
+      @for (post of posts; track post.postId) {
+      <div
+        class="posts secondary-background rounded-border box-shadow theme-border"
+      >
+        <app-post
+          [post]="post"
+          (postDeleted)="onPostDelete($event)"
+          (postUpdated)="onPostUpdate($event)"
+        ></app-post>
+      </div>
+      }
+      <div *ngIf="newPostsLoading" class="spinner-container">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+  </div>
+</div>

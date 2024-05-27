@@ -1,0 +1,66 @@
+<div class="comment-container comments-bottom-border" *ngIf="comment">
+  <app-user-avatar
+    id="comment-user-avatar"
+    [profilePictureUrl]="comment.profilePictureUrl"
+    [fullName]="comment.fullName"
+    [gender]="comment.gender"
+  ></app-user-avatar>
+  <div class="comment-content-container">
+    <div
+      class="comment-name-and-content comments-content-background rounded-border"
+    >
+      <h1 class="comment-user-name">{{ comment.fullName }}</h1>
+      <p class="comment-content">{{ comment.content }}</p>
+      <button
+        type="button"
+        *ngIf="comment.isAuthorized"
+        (click)="deleteComment(comment.commentId)"
+        [disabled]="isLoading"
+      >
+        <span
+          *ngIf="!deleteCommentLoading"
+          class="material-symbols-rounded filled comment-icon-close"
+        >
+          close</span
+        >
+        <div *ngIf="deleteCommentLoading" class="spinner-container">
+          <app-spinner></app-spinner>
+        </div>
+      </button>
+    </div>
+    <div class="comment-bottom">
+      <p class="comment-date">
+        {{ comment.timeCommented | timeAgo }}
+      </p>
+      <div class="comment-likes-container">
+        <button
+          type="button"
+          (click)="toggleLike(comment)"
+          [disabled]="isLoading"
+        >
+          <span
+            class="material-symbols-rounded comment-count-icons"
+            [ngClass]="{
+              filled: comment.isLikedByCurrentUser || optimisticLike
+            }"
+            >favorite</span
+          >
+        </button>
+        <button
+          type="button"
+          (click)="displayLikedUsers()"
+          class="comment-likes-count"
+          [disabled]="isLoading"
+        >
+          {{ comment.likesCount }} Likes
+        </button>
+        <app-liked-users-list
+          class="liked-users-list"
+          *ngIf="showLikedUsers"
+          [likedUsers]="likedUsers"
+          [isLikedByCurrentUser]="comment.isLikedByCurrentUser"
+        ></app-liked-users-list>
+      </div>
+    </div>
+  </div>
+</div>

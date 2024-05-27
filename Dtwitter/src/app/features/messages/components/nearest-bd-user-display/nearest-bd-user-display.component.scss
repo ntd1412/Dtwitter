@@ -1,0 +1,33 @@
+.nearest-bd-user-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
+}
+.avatar-name-days-until-bd {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  font-family: "Roboto Regular";
+
+  .avatar {
+    flex-shrink: 0;
+    width: 5em;
+    height: 5em;
+  }
+}
+.name {
+  font-size: 2em;
+}
+.days-until-bd {
+  font-size: 1.6em;
+}
+.nearest-bd-date {
+  font-family: "Roboto Regular";
+  font-size: 1.8em;
+}
+@media (max-width: 1300px) {
+  .nearest-bd-date {
+    display: none;
+  }
+}

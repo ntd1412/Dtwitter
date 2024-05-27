@@ -1,0 +1,35 @@
+<div
+  class="friend-list-container secondary-background rounded-border box-shadow"
+>
+  <ng-container *ngIf="friends$ | async as friends; else loadingOrError">
+    <ng-container *ngIf="!loadingError; else loadingOrError">
+      <h1 class="friend-list-count header-text">
+        Dtwitter Friends: {{ friends.length }}
+      </h1>
+
+      <div *ngIf="friends.length === 0" class="no-friends-container">
+        <h2 class="no-friends">You currently have no friends on Dtwitter</h2>
+        <a routerLink="/discover" class="find-friends reverse-parameters"
+          >Find Friends</a
+        >
+      </div>
+
+      @for (friend of friends; track friend.username){
+      <div class="friends">
+        <app-friend-display [friend]="friend"></app-friend-display>
+      </div>
+      }
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loadingOrError>
+    <h1 class="friend-list-count header-text">PlayLink Friends:</h1>
+    <p class="no-friends">
+      {{
+        loadingError
+          ? "Error Loading Users Friends"
+          : "Loading Users Friends..."
+      }}
+    </p>
+  </ng-template>
+</div>

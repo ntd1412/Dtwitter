@@ -1,0 +1,29 @@
+<section
+  id="profile-route-container"
+  [@ProfileAnimation]
+  *ngIf="user$ | async as user; else loading"
+>
+  <app-profile-user-card
+    [user]="user"
+    [isCurrentUserProfile]="isCurrentUserProfile"
+  ></app-profile-user-card>
+  <div id="profile-features">
+    <app-profile-navigation
+      [username]="user.username"
+      [isCurrentUserProfile]="isCurrentUserProfile"
+    ></app-profile-navigation>
+
+    <div [@routeAnimations]="prepareRoute(outlet)" id="profile-routes">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </div>
+</section>
+
+<!-- loading and error handling  -->
+
+<ng-template #loading>
+  <div class="spinner-error-container">
+    <app-spinner *ngIf="!loadingError"></app-spinner>
+    <h1 *ngIf="loadingError">Error Loading User</h1>
+  </div>
+</ng-template>

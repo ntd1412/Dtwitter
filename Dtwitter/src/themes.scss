@@ -1,0 +1,276 @@
+$light-theme: (
+  background: #f0f2f5,
+  background-secondary: white,
+  primary-text: #3a3b3c,
+  secondary-text: #777777,
+  header-icons: #b8bbbf,
+);
+
+$dark-theme: (
+  background: #18191a,
+  background-secondary: #242526,
+  primary-text: #d0d2d6,
+  secondary-text: #b0b0b0,
+  header-icons: #b8bbbf,
+);
+
+// Theme classes
+.theme-light {
+  background-color: map-get($light-theme, background);
+  color: map-get($light-theme, primary-text);
+
+  .primary-parameters {
+    background-color: map-get($light-theme, background);
+    color: map-get($light-theme, primary-text);
+  }
+  .user-cards-theme {
+    background-color: map-get($light-theme, background);
+    color: map-get($light-theme, primary-text);
+  }
+  .reverse-parameters {
+    background-color: #3a3b3c;
+    color: white;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgb(77, 78, 79);
+    }
+  }
+  .secondary-background {
+    background-color: map-get($light-theme, background-secondary);
+  }
+  .secondary-text {
+    color: map-get($light-theme, secondary-text);
+  }
+  .header-text {
+    color: map-get($light-theme, primary-text);
+  }
+  .header-icons-middle {
+    color: map-get($light-theme, primary-text);
+  }
+  .logo-text-theme {
+    color: map-get($light-theme, primary-text);
+  }
+  .header-icons-right {
+    background-color: #d8dadf;
+  }
+  .box-shadow {
+    box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.1),
+      0 0.1em 0.1em rgba(0, 0, 0, 0.05);
+  }
+  .theme-border {
+    border: 0.1em solid #3d3a3a27;
+  }
+
+  .theme-border-bottom {
+    border-bottom: 0.1em solid #3d3a3a27;
+  }
+  .theme-border-top {
+    border-top: 0.1em solid #3d3a3a27;
+  }
+  //navigation links themes light
+  .profile-link-text-container:hover,
+  .navigation-links-icons-container:hover,
+  .dropdown-section:hover,
+  .post-actions:hover,
+  .liked-users:hover {
+    background-color: #f2f2f2;
+  }
+
+  .active-link .profile-link-text-container:hover,
+  .active .navigation-links-icons-container:hover {
+    background-color: transparent;
+  }
+  .active .material-symbols-rounded {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+  }
+  .active.navigation-links-container.bottom-border-active {
+    border-bottom: 0.3em solid #3a3b3c;
+  }
+  .active-link.profile-navigation-links.bottom-border-active {
+    border-bottom: 0.15em solid #3a3b3c;
+  }
+
+  .edit-dropzone {
+    border: 0.05em dashed #3a3b3c;
+    background-color: #d8dadf;
+    color: #3a3b3c;
+  }
+  .edit-labels {
+    color: #3d3a3ad4;
+  }
+
+  .filter-inputs {
+    color: #3a3b3c;
+    background-color: #f0f2f5;
+    border: 0.1em solid #3a3b3c;
+  }
+  .messages-buttons {
+    color: #3a3b3c;
+    background-color: #f0f2f5;
+  }
+  .mat-button-toggle-checked {
+    background-color: #3a3b3ce2 !important;
+    color: #f5f5f5 !important;
+    border: 0.1em solid #18191a !important;
+    border-radius: 0.2em !important;
+  }
+
+  .post-counts-borders {
+    border-top: 0.1em solid #3d3a3a27;
+    border-bottom: 0.1em solid #3d3a3a27;
+  }
+
+  .comments-bottom-border {
+    border-bottom: 0.1em solid #3d3a3a27;
+  }
+
+  .quiz-buttons-theme {
+    color: map-get($light-theme, primary-text);
+    border: 0.1em solid #3d3a3a27;
+    background-color: map-get($light-theme, background-secondary);
+  }
+
+  .comments-content-background {
+    background-color: #f0f2f5;
+  }
+
+  .visible-mobile-filter #filter-form {
+    background-color: map-get($light-theme, background-secondary);
+    border-radius: 0.5em;
+  }
+
+  .spinner {
+    border: 0.1em solid #d8dadf;
+    border-top: 0.1em solid #3a3b3c;
+  }
+}
+
+.theme-dark {
+  background-color: map-get($dark-theme, background);
+  color: map-get($dark-theme, primary-text);
+
+  .primary-parameters {
+    background-color: map-get($dark-theme, background);
+    color: map-get($dark-theme, primary-text);
+  }
+  .user-cards-theme {
+    background-color: #3a3b3c;
+    color: map-get($dark-theme, primary-text);
+  }
+  .reverse-parameters {
+    background-color: rgba(237, 234, 234, 0.929);
+    color: map-get($dark-theme, background);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: map-get($dark-theme, primary-text);
+    }
+  }
+  .secondary-background {
+    background-color: map-get($dark-theme, background-secondary);
+  }
+  .logo-text-theme {
+    color: white;
+  }
+  .secondary-text {
+    color: map-get($dark-theme, secondary-text);
+  }
+  .header-icons-right {
+    background-color: #4e4f50;
+    color: #e7e9ed;
+  }
+  .header-text {
+    color: white;
+  }
+  .theme-border {
+    border: 0.1em solid #3d3a3a;
+  }
+  .theme-border-bottom {
+    border-bottom: 0.1em solid #3d3a3a;
+  }
+  .theme-border-top {
+    border-top: 0.1em solid #3d3a3a;
+  }
+  //navigation links themes dark
+  .header-icons-middle {
+    color: map-get($dark-theme, header-icons);
+  }
+  .profile-link-text-container:hover,
+  .navigation-links-icons-container:hover,
+  .dropdown-section:hover,
+  .post-actions:hover,
+  .liked-users:hover {
+    background-color: #3a3b3c;
+  }
+  .active-link .profile-link-text-container:hover,
+  .active .navigation-links-icons-container:hover {
+    background-color: transparent;
+  }
+  .active .material-symbols-rounded {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+    color: white;
+  }
+  .active.navigation-links-container.bottom-border-active {
+    border-bottom: 0.3em solid white;
+  }
+  .active-link.profile-navigation-links.bottom-border-active {
+    border-bottom: 0.15em solid white;
+  }
+
+  .edit-dropzone {
+    border: 0.05em dashed rgba(255, 255, 255, 0.765);
+    background-color: #4e4f50;
+    color: white;
+  }
+  .edit-labels {
+    color: #e7e9edaf;
+  }
+
+  .filter-inputs {
+    color: rgba(255, 255, 255, 0.562);
+    background-color: #3a3b3c;
+    border: 0.1em solid #b0b0b0;
+  }
+  .messages-buttons {
+    color: rgba(255, 255, 255, 0.95);
+    background-color: #3a3b3c;
+  }
+  .filter-inputs::placeholder {
+    color: rgba(255, 255, 255, 0.562);
+  }
+
+  .mat-button-toggle-checked {
+    background-color: rgba(255, 255, 255, 0.795) !important;
+    color: #18191a !important;
+    border-radius: 0.2em !important;
+  }
+
+  .post-counts-borders {
+    border-top: 0.1em solid #3d3a3a;
+    border-bottom: 0.1em solid #3d3a3a;
+  }
+
+  .comments-bottom-border {
+    border-bottom: 0.1em solid #3d3a3a;
+  }
+  .comments-content-background {
+    background-color: #3a3b3c;
+  }
+
+  .quiz-buttons-theme {
+    color: map-get($dark-theme, primary-text);
+    border: 0.1em solid #3d3a3a;
+    background-color: map-get($dark-theme, background-secondary);
+  }
+
+  .visible-mobile-filter #filter-form {
+    background-color: map-get($dark-theme, background-secondary);
+    border-radius: 0.5em;
+  }
+
+  .spinner {
+    border: 0.1em solid #4e4f50;
+    border-top: 0.1em solid #b0b0b0;
+  }
+}

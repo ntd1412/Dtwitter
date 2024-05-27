@@ -1,0 +1,137 @@
+<div class="post-container" *ngIf="post">
+  <div class="post-top">
+    <a routerLink="/user/{{ post.username }}" class="post-header">
+      <app-user-avatar
+        id="post-user-avatar"
+        [profilePictureUrl]="post.profilePictureUrl"
+        [fullName]="post.fullName"
+        [gender]="post.gender"
+      ></app-user-avatar>
+      <div class="post-user-name-and-date">
+        <h1 class="post-user-name">{{ post.fullName }}</h1>
+        <p class="post-date">{{ post.datePosted | relativeTime }}</p>
+      </div>
+    </a>
+    <button
+      type="button"
+      *ngIf="post.isAuthorized"
+      (click)="deletePost(post)"
+      [disabled]="isLoading"
+    >
+      <span
+        *ngIf="!deletePostLoading"
+        class="material-symbols-rounded filled post-icon-close"
+      >
+        close
+      </span>
+      <div *ngIf="deletePostLoading" class="delete-post-spinner-container">
+        <app-spinner></app-spinner>
+      </div>
+    </button>
+  </div>
+
+  <div
+    class="post-description"
+    [ngClass]="{
+      bigger: post.photoUrl === null
+    }"
+  >
+    {{ post.description }}
+  </div>
+
+  <img
+    *ngIf="post.photoUrl"
+    class="post-image rounded-border theme-border"
+    [ngSrc]="post.photoUrl | relativeUrl"
+    alt="{{ post.fullName }}'s post image'"
+    height="600"
+    width="600"
+    preconnect="true"
+    priority
+  />
+  <div class="post-likes-and-comments-count">
+    <button
+      type="button"
+      (click)="displayLikedUsers()"
+      class="post-likes-count"
+      [disabled]="isLoading"
+    >
+      {{ post.likesCount }} Likes
+    </button>
+    <button
+      type="button"
+      (click)="toggleComments()"
+      [disabled]="isLoading"
+      class="post-comments-count"
+    >
+      {{ post.commentsCount }} Comments
+    </button>
+    <app-liked-users-list
+      class="liked-users-list"
+      *ngIf="showLikedUsers"
+      [likedUsers]="likedUsers"
+      [isLikedByCurrentUser]="post.isLikedByCurrentUser"
+    ></app-liked-users-list>
+  </div>
+  <div class="post-bottom post-counts-borders">
+    <button
+      type="button"
+      class="post-actions"
+      (click)="toggleLike(post)"
+      [disabled]="isLoading"
+    >
+      <span
+        class="material-symbols-rounded post-count-icons"
+        [ngClass]="{ filled: post.isLikedByCurrentUser || optimisticLike }"
+      >
+        favorite
+      </span>
+      <p class="post-count">Like</p>
+    </button>
+    <button
+      type="button"
+      class="post-actions"
+      (click)="toggleComments()"
+      [disabled]="isLoading"
+    >
+      <span class="material-symbols-rounded post-count-icons"
+        >mode_comment</span
+      >
+      <p class="post-count">Comment</p>
+    </button>
+  </div>
+
+  <div *ngIf="commentsShown" class="comments-container">
+    <button
+      type="button"
+      *ngIf="
+        !allCommentsLoaded &&
+        post.commentsCount > 0 &&
+        !commentsLoading &&
+        !errorLoadingComments
+      "
+      (click)="showMoreComments()"
+      class="load-more-comments-button"
+    >
+      Load More Comments
+    </button>
+    <div *ngIf="commentsLoading" class="spinner-container">
+      <app-spinner></app-spinner>
+    </div>
+    <p *ngIf="errorLoadingComments" class="error-loading-comments">
+      Error Loading Comments
+    </p>
+    @for (comment of comments; track comment.commentId){
+    <div class="comments">
+      <app-comment
+        (commentDeleted)="onCommentDelete($event)"
+        [comment]="comment"
+      ></app-comment>
+    </div>
+    }
+    <app-upload-comment
+      (commentUploaded)="onCommentUpload($event)"
+      [postId]="post.postId"
+    ></app-upload-comment>
+  </div>
+</div>

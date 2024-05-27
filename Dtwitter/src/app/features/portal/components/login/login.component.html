@@ -1,0 +1,48 @@
+<h1 id="login-header">Log into your account</h1>
+<form
+  #loginForm="ngForm"
+  (ngSubmit)="login()"
+  autocomplete="off"
+  id="login-form"
+>
+  <div class="input-container">
+    <label class="form-label" for="userName">Username*</label>
+    <input
+      [(ngModel)]="loginData.username"
+      #username="ngModel"
+      type="text"
+      id="userName"
+      name="username"
+      class="form-input"
+      required
+    />
+  </div>
+  <div class="input-container">
+    <label class="form-label" for="password">Password*</label>
+    <input
+      [(ngModel)]="loginData.password"
+      #password="ngModel"
+      type="password"
+      id="password"
+      name="password"
+      class="form-input"
+      required
+    />
+  </div>
+  <button
+    type="submit"
+    [disabled]="!username.value || !password.value || isLoading"
+    class="login-btn"
+  >
+    {{ isLoading ? "Logging in..." : "Login" }}
+  </button>
+</form>
+
+<!-- <button
+  type="button"
+  class="guest-login primary-text"
+  [disabled]="isLoading"
+  (click)="guestLogin()"
+>
+  Guest Login
+</button> -->

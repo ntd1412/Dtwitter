@@ -1,0 +1,88 @@
+.comment-container {
+  display: flex;
+  width: 100%;
+  gap: 1em;
+  font-family: "Roboto Regular";
+}
+#comment-user-avatar {
+  flex-shrink: 0;
+  margin-top: 0.2em;
+  font-size: 0.85em;
+  height: 5.2em;
+  width: 5.2em;
+}
+
+.comment-content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5em;
+}
+.comment-name-and-content {
+  position: relative;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1.5em;
+  gap: 0.3em;
+  min-width: 20em;
+}
+.comment-user-name {
+  font-size: 1.6em;
+}
+.comment-content {
+  font-size: 1.6em;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.comment-bottom {
+  display: flex;
+  gap: 1.2em;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 1em;
+  margin-left: 0.4em;
+}
+.comment-date {
+  font-size: 1.4em;
+}
+.comment-likes-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.comment-count-icons {
+  font-size: 1.8em;
+}
+.comment-likes-count {
+  font-size: 1.4em;
+  margin-bottom: 0.3em;
+}
+.liked-users-list {
+  position: absolute;
+  font-size: 1.8em;
+  z-index: 20;
+  bottom: 0.2em;
+  left: 110%;
+}
+
+.spinner-container,
+.comment-icon-close {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+  font-size: 2.4em;
+  transition: opacity 0.2s ease-in-out;
+}
+.comment-icon-close:hover {
+  opacity: 0.6;
+}
+.spinner-container {
+  cursor: default;
+}
+button:disabled {
+  cursor: pointer;
+}

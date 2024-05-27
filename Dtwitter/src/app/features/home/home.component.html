@@ -1,0 +1,51 @@
+<section id="home-section-container">
+  <!-- home left -->
+
+  <div id="home-left">
+    <app-home-user-card></app-home-user-card>
+  </div>
+
+  <!-- home middle -->
+
+  <div id="home-middle">
+    <app-upload-post
+      [postsLoaded]="isLoading"
+      (postUploaded)="onPostUpload($event)"
+    ></app-upload-post>
+    <div class="home-posts-container">
+      @if(isLoading){
+      <div class="posts secondary-background rounded-border box-shadow">
+        <app-post-skeleton [loadingError]="loadingError"></app-post-skeleton>
+      </div>
+      } @else {
+      <div
+        id="posts-container"
+        infiniteScroll
+        [infiniteScrollDistance]="0.8"
+        [infiniteScrollThrottle]="300"
+        (scrolled)="onScroll()"
+      >
+        @for (post of posts; track post.postId) {
+        <div class="posts secondary-background rounded-border box-shadow">
+          <app-post
+            [post]="post"
+            (postDeleted)="onPostDelete($event)"
+            (postUpdated)="onPostUpdate($event)"
+          ></app-post>
+        </div>
+        } @if(newPostsLoading){
+        <div class="spinner-container">
+          <app-spinner></app-spinner>
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- home right -->
+
+  <div id="home-right">
+    <app-friend-list></app-friend-list>
+  </div>
+</section>

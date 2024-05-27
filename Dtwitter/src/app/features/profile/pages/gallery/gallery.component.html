@@ -1,0 +1,21 @@
+<div id="gallery-tab" class="secondary-background rounded-border">
+  @switch(loadingState) { 
+    @case ('NoPhotos') {
+      <h1>User has no photos</h1>
+    } 
+    @case ('Loading') {
+      <h1 class="loading">
+      Loading User Photos...
+        <div class="spinner-container">
+          <app-spinner></app-spinner>
+        </div>
+      </h1>
+    } 
+    @case ('Error') {
+      <h1>Error Loading User Photos</h1>
+    } 
+    @case('Loaded') {
+      <gallery [items]="postPhotos" id="profile-gallery" class="rounded-border"></gallery>
+    } 
+  }
+</div>

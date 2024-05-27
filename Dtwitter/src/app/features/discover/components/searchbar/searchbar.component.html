@@ -1,0 +1,50 @@
+<div id="searchbar-container">
+  <div id="searchbar-icon-container">
+    <span class="material-symbols-rounded filled search-icon"> search </span>
+  </div>
+  <div class="label-and-filter-button">
+    <label for="orderBy" class="filter-label"
+      >Community Size: {{ searchUsers.length + 1 }}</label
+    >
+    <button
+      type="button"
+      (click)="toggleFilter()"
+      id="filter-users-button"
+      class="reverse-parameters rounded-border"
+    >
+      <p>Filter Users</p>
+      <span class="material-symbols-rounded filled icon-filter">
+        filter_alt
+      </span>
+    </button>
+  </div>
+
+  <input
+    id="user-searchbar"
+    class="filter-inputs"
+    type="text"
+    placeholder="Search users"
+    matInput
+    [formControl]="searchControl"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    @for (user of filteredUsers; track user.username) {
+    <mat-option
+      class="search-options"
+      [value]="user"
+      routerLink="/user/{{ user.username }}"
+    >
+      <div class="option-content">
+        <app-user-avatar
+          id="search-user-avatar"
+          [profilePictureUrl]="user.profilePictureUrl"
+          [fullName]="user.fullName"
+          [gender]="user.gender"
+        ></app-user-avatar>
+        <p>{{ user.fullName }}</p>
+      </div>
+    </mat-option>
+    }
+  </mat-autocomplete>
+</div>
